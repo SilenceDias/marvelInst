@@ -58,7 +58,9 @@ public class UserService {
         user.setBio(userDto.getBio());
         return userRepository.save(user);
     }
-
+    public User getUserById(Long userId){
+        return userRepository.findUserById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
     public User getCurrentUser(Principal principal){
         return getUserPrincipal(principal);
     }
